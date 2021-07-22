@@ -1,0 +1,18 @@
+[Unit]
+Description=ConBee Module loader
+Requires=pkg-volume.target
+Wants=
+Requisite=
+After=
+IgnoreOnIsolate=no
+OnFailure=
+
+[Install]
+WantedBy=pkg-Docker-dockerd.service
+
+[Service]
+Type=simple
+ExecStart=/bin/bash -c "modprobe usbserial && modprobe ftdi_sio && modprobe cdc-acm" 
+TimeoutStartSec=3600
+TimeoutStopSec=3600
+RemainAfterExit=true
